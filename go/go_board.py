@@ -23,7 +23,7 @@ class GoBoard:
             black: GoPlayer, 
             white: GoPlayer, 
             size:int=(19,19), 
-            komi:int=6.5, 
+            komi:float=6.5, 
             *argv):
 
         self.size = size
