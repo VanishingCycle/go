@@ -1,4 +1,5 @@
-from go.go_player import GoPlayer
+from go_player import GoPlayer
+from typing import Tuple
 
 class GoBoard:
     r"""An object that represents the go board. 
@@ -22,12 +23,21 @@ class GoBoard:
     def __init__(self, 
             black: GoPlayer, 
             white: GoPlayer, 
-            size:int=(19,19), 
-            komi:float=6.5, 
+            size: Tuple[int, int]=(19,19), 
+            komi: float=6.5, 
             *argv):
 
-        self.size = size
-        self.komi = komi
-        self.black = black
-        self.white = white
-        self.has_ended = False
+        self._size = size
+        self._komi = komi
+        self._black = black
+        self._white = white
+        self._has_ended = False
+
+    def update_move(move: str):
+        pass
+
+    def update_move(move: Tuple[int, int]):
+        pass
+
+    def check_history(numOfMoves: int) -> List[str]:
+        pass
