@@ -1,7 +1,7 @@
 from turtle import update
-from new_go_player import GlobalPlayer
-from new_move_handler import MoveHandler
-from new_go_board import GoBoard
+from go_player import GlobalPlayer
+from move_handler import MoveHandler
+from go_board import GoBoard
 
 #Create a player, and create the corresponding local player.
 

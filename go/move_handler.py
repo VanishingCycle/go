@@ -1,4 +1,4 @@
-from new_go_player import LocalPlayer
+from go_player import LocalPlayer
 from typing import Tuple
 
 class MoveHandler:
