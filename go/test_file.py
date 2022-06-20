@@ -1,5 +1,6 @@
 from turtle import update
 from go_player import GlobalPlayer
+from go_player import Move 
 from move_handler import MoveHandler
 from go_board import GoBoard
 
@@ -7,11 +8,6 @@ from go_board import GoBoard
 
 Nicolas = GlobalPlayer("Nicolas",30) 
 Honglu = GlobalPlayer("Honglu",30)
-
-#Create the corresponding local player, color : black
-
-nicolas = Nicolas.get_local("black")
-honglu = Honglu.get_local("white")
 
 #Test of all the methods from MoveHandler : 
 
@@ -44,41 +40,60 @@ m.goban[4][3] = "white"
 m.goban[5][4] = "white"
 m.goban[4][4] = "black"
 m.groups.append([(4,4)])
-honglu.move = (4,5)
-print(m.check_capture(honglu)) 
+move1 = Move(position =(4,5), color = "white")
+print(m.check_capture(move1)) 
 
 #check_suicide : 
 
 m.goban[4][5] = "white"
-nicolas.move = (4,4)
-print (m.check_suicide(nicolas))
+move2 = Move( position =(4,4), color = "black")
+print (m.check_suicide(move2))
 
 #check definition of GoBoard
+print("test for the go board")
 blank_goban = [["void" for x in range(19)] for y in range(19)]
 m.goban = blank_goban
 m.groups = []
 print("checking GoBoard...")
-MyBoard = GoBoard(black_player = Nicolas, white_player = Honglu, black = nicolas, white = honglu, move_handler=m)
+MyBoard = GoBoard(black = Nicolas, white = Honglu, move_handler=m)
 print(MyBoard.move_handler.groups)
-honglu.move = (1,1)
-MyBoard.update_groups(honglu)
+move3 = Move(position =(1,1), color = "white") 
+MyBoard.update_move(move3)
 print(MyBoard.move_handler.groups)
-honglu.move = (1,2)
-MyBoard.update_groups(honglu)
+move4 = Move(position =(1,2), color = "white")
+MyBoard.update_move(move4)
 print(MyBoard.move_handler.groups)
-nicolas.move = (5,4)
-MyBoard.update_move(nicolas)
+move5 = Move(position =(5,4), color = "black")
+MyBoard.update_move(move5)
 print(MyBoard.move_handler.groups)
-nicolas.move = (4,4)
-MyBoard.update_move(nicolas)
+move6 = Move(position =(4,4), color = "black")
+MyBoard.update_move(move6)
 print(MyBoard.move_handler.groups)
-honglu.move = (12,12)
-MyBoard.update_move(honglu)
+move7 = Move(position =(12,12), color = "white")
+MyBoard.update_move(move7)
 print(MyBoard.move_handler.groups)
 
 #check the play function 
 
-blank_goban = [["void" for x in range(19)] for y in range(19)]
-m.goban = blank_goban
-m.groups = []
-
+blank_goban2 = [["void" for x in range(4)] for x in range(4)]
+MyBoard.move_handler.goban = blank_goban2
+MyBoard.move_handler.size = (4,4)
+MyBoard.move_handler.groups = []
+move8 = Move(position =(0,1), color = "white")
+MyBoard.update_move(move8)
+move9 = Move(position =(1,0), color = "white")
+MyBoard.update_move(move9)
+move10 = Move(position =(1,1), color = "white")
+MyBoard.update_move(move10)
+move11 = Move(position =(2,0), color = "black")
+MyBoard.update_move(move11)
+move12 = Move(position =(2,1), color = "black")
+MyBoard.update_move(move12)
+move13 = Move(position =(2,2), color = "black")
+MyBoard.update_move(move13)
+move14 = Move(position =(1,2), color = "black")
+MyBoard.update_move(move14)
+move15 = Move(position =(0,2), color = "black")
+MyBoard.update_move(move15)
+print("groups : ", MyBoard.move_handler.groups)
+print(MyBoard.count_points())
